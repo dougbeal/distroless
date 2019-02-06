@@ -66,7 +66,7 @@ container_image(
     base = "//base:static",
     tars = [
         ":passwd_tar",
-        ":group_tar"e
+        ":group_tar",
     ],
     user = "www-data",
     visibility = ["//visibility:private"],
@@ -77,7 +77,7 @@ container_image(
     base = "//base:debug",
     tars = [
         ":passwd_tar",
-        ":group_tar"e
+        ":group_tar",
     ],
     user = "www-data",
     visibility = ["//visibility:private"],
