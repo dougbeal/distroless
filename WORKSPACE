@@ -211,7 +211,6 @@ container_pull(
     repository = "distroless/base",
 )
 
-
 # Have the py_image dependencies for testing.
 load(
     "@io_bazel_rules_docker//python:image.bzl",
