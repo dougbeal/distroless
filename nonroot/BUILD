@@ -76,7 +76,7 @@ container_image(
 container_image(
     name = "nonroot_debug",
     base = "@distroless_debug//image",
-    tars = [ 
+    tars = [
         ":passwd_tar",
         ":group_tar",
     ],
