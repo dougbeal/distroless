@@ -6,7 +6,7 @@ container_push(
     name = "push_nonroot",
     format = "Docker",
     image = ":nonroot",
-    registry = "hub.docker.com",
+    registry = "index.docker.com",
     repository = "dougbeal/distolress",
     tag = "latest",
 )
@@ -15,7 +15,7 @@ container_push(
 #     name = "push_debug",
 #     format = "Docker",
 #     image = ":nonroot_debug",
-#     registry = "hub.docker.com",
+#     registry = "index.docker.com",
 #     repository = "dougbeal/distolress",
 #     tag = "latest",
 # )
@@ -24,7 +24,7 @@ container_push(
 #     name = "push_static",
 #     format = "Docker",
 #     image = ":nonroot_static",
-#     registry = "hub.docker.com",
+#     registry = "index.docker.com",
 #     repository = "dougbeal/distolress",
 #     tag = "latest",
 # )
