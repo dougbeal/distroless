@@ -93,7 +93,7 @@ go_binary(
 
 container_image(
     name = "check_user_image",
-    base = ":passwd_image",
+    base = ":nonroot",
     files = [":user"],
     visibility = ["//visibility:private"],
 )
