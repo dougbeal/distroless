@@ -52,8 +52,8 @@ pkg_tar(
 
 # Include it in our image as a tar.
 container_image(
-    name = "nonroot",
-    base = "//base:base",
+    name = "nonroot_static",
+    base = "//base:static",
     tars = [
         ":passwd_tar",
         ":group_tar",
@@ -63,8 +63,8 @@ container_image(
 )
 
 container_image(
-    name = "nonroot_static",
-    base = "//base:static",
+    name = "nonroot",
+    base = "//base",
     tars = [
         ":passwd_tar",
         ":group_tar",
