@@ -3,13 +3,14 @@ load("@io_bazel_rules_docker//go:image.bzl", "go_image")
 load("@io_bazel_rules_docker//container:container.bzl", "container_image")
 load("@io_bazel_rules_docker//contrib:test.bzl", "container_test")
 load("@io_bazel_rules_docker//contrib:passwd.bzl", "passwd_entry", "passwd_file")
+load("@io_bazel_rules_docker//contrib:group.bzl", "group_entry", "group_file")
 load("@io_bazel_rules_go//go:def.bzl", "go_binary")
 
 # Create a passwd file with a nonroot user and uid.
 passwd_entry(
-    name = "www_data",
+    name = "www_data_user",
     uid = 33,
-    guid = 33,
+    gid = 33,
     username = "www-data",    
     info = "nonroot",
 )
@@ -17,13 +18,13 @@ passwd_entry(
 passwd_file(
     name = "passwd",
     entries = [
-        ":www_data",
+        ":www_data_user",
     ],
 )
 
 # Create /etc/group with the root group
 group_entry(
-    name = "www_data",
+    name = "www_data_group",
     gid = 33,
     groupname = "www-data",
 )
@@ -31,7 +32,7 @@ group_entry(
 group_file(
     name = "group",
     entries = [
-        ":www_data",
+        ":www_data_group",
     ],
 )
 
