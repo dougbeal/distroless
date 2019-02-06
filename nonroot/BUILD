@@ -53,7 +53,7 @@ pkg_tar(
 # Include it in our image as a tar.
 container_image(
     name = "nonroot_static",
-    base = "@distroless_base_static//image",
+    base = "@distroless//static",
     tars = [
         ":passwd_tar",
         ":group_tar",
@@ -64,7 +64,7 @@ container_image(
 
 container_image(
     name = "nonroot",
-    base = "@distroless_base//image",
+    base = "@distroless//base",
     tars = [
         ":passwd_tar",
         ":group_tar",
@@ -75,7 +75,7 @@ container_image(
 
 container_image(
     name = "nonroot_debug",
-    base = "@distroless_base_debug//image",
+    base = "@distroless//debug",
     tars = [
         ":passwd_tar",
         ":group_tar",
