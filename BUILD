@@ -5,7 +5,7 @@ load("@io_bazel_rules_docker//container:container.bzl", "container_bundle")
 container_bundle(
     name = "all",
     images = {
-        "github.com/dougbeal/distolress/nonroot:debug": "//nonroot:debug"
+        "github.com/dougbeal/distolress/nonroot:debug": "//nonroot:debug",
     },
 )
 

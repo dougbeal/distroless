@@ -9,10 +9,10 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary")
 # Create a passwd file with a nonroot user and uid.
 passwd_entry(
     name = "www_data_user",
-    uid = 33,
     gid = 33,
-    username = "www-data",    
     info = "nonroot",
+    uid = 33,
+    username = "www-data",
 )
 
 passwd_file(
