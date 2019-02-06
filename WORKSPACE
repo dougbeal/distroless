@@ -203,12 +203,28 @@ load(
 
 container_repositories()
 
+
 load("@io_bazel_rules_docker//container:container.bzl", "container_pull")
 
 container_pull(
     name = "distroless_base",
     registry = "gcr.io",
     repository = "distroless/base",
+    tag = "latest",
+)
+
+container_pull(
+    name = "distroless_base_static",
+    registry = "gcr.io",
+    repository = "distroless/base",
+    tag = "static:latest",
+)
+
+container_pull(
+    name = "distroless_base_debug",
+    registry = "gcr.io",
+    repository = "distroless/base",
+    tag = "debug:latest",
 )
 
 # Have the py_image dependencies for testing.
