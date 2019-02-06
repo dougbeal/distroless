@@ -212,19 +212,19 @@ container_pull(
     tag = "latest",
 )
 
-# container_pull(
-#     name = "distroless_base_static",
-#     registry = "gcr.io",
-#     repository = "distroless/base",
-#     tag = "static:latest",
-# )
+container_pull(
+    name = "distroless_debug",
+    registry = "gcr.io",
+    repository = "distroless/base",
+    tag = "debug",
+)
 
-# container_pull(
-#     name = "distroless_base_debug",
-#     registry = "gcr.io",
-#     repository = "distroless/base",
-#     tag = "debug:latest",
-# )
+container_pull(
+    name = "distroless_static",
+    registry = "gcr.io",
+    repository = "distroless/static",
+    tag = "latest",
+)
 
 # Have the py_image dependencies for testing.
 load(
