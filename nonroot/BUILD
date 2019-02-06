@@ -63,7 +63,7 @@ container_image(
 )
 
 container_image(
-    name = "static",
+    name = "nonroot_static",
     base = "//base:static",
     tars = [
         ":passwd_tar",
@@ -74,7 +74,7 @@ container_image(
 )
 
 container_image(
-    name = "debug",
+    name = "nonroot_debug",
     base = "//base:debug",
     tars = [
         ":passwd_tar",

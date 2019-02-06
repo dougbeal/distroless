@@ -5,7 +5,7 @@ load("@io_bazel_rules_docker//container:container.bzl", "container_push")
 container_push(
     name = "push_debug",
     format = "Docker",
-    image = "nonroot:debug",
+    image = ":nonroot_debug",
     registry = "hub.docker.com",
     repository = "dougbeal/distolress",
     tag = "latest",
@@ -14,16 +14,16 @@ container_push(
 container_push(
     name = "push_static",
     format = "Docker",
-    image = "nonroot:static",
+    image = ":nonroot_static",
     registry = "hub.docker.com",
     repository = "dougbeal/distolress",
     tag = "latest",
 )
 
 container_push(
-    name = "push",
+    name = "push_nonroot",
     format = "Docker",
-    image = "nonroot",
+    image = ":nonroot",
     registry = "hub.docker.com",
     repository = "dougbeal/distolress",
     tag = "latest",
