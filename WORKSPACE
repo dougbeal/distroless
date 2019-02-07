@@ -211,7 +211,7 @@ docker_toolchain_configure(
   # OPTIONAL: Path to a directory which has a custom docker client config.json.
   # See https://docs.docker.com/engine/reference/commandline/cli/#configuration-files
   # for more details.
-  client_config="./config.json",
+  client_config=".",
 )
 
 load(
