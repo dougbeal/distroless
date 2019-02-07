@@ -61,8 +61,8 @@ pkg_tar(
     name = "image_nonroot_%d_%s" % (uid, tag),
     base = "@distroless_base_image_%s//image" % tag,
     tars = [
-        ":passwd_tar_%d" % uid,
-        ":group_tar_%d" % uid,
+        ":passwd_tar",
+        ":group_tar",
     ],
     user = "user_nonroot_%d" % uid,
     visibility = ["//visibility:public"],
