@@ -68,7 +68,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary")
 [[container_push(
     name = "push_nonroot_%s_uid%d" % (tag, uid),
     format = "Docker",
-    image = "//nonroot:image_nonroot_%s_%d",
+    image = "//nonroot:image_nonroot_%d_%s",
     registry = "index.docker.io",
     repository = "dougbeal/distroless",
     tag = "%d_%s" % (uid, tag),
