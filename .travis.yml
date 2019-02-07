@@ -27,18 +27,8 @@ install:
   - wget https://github.com/bazelbuild/buildtools/releases/download/0.11.1/buildifier && chmod +x buildifier && mv buildifier $HOME/bin/
   - sudo pip install pylint
 
-jobs:
-  include:
-    - stage: fetch
-      script: bazel fetch //...
-    - stage: build 
-      script: bazel build --noshow_progress --noshow_loading_progress --test_output=errors //...
-    - stage: test
-      script: bazel test --test_output=errors //...
-    - stage: deploy
-      script: bazel run push_nonroot push_debug push_static
-
-  
+script:
+  - ./build_test.sh
 
 notifications:
   email: false
