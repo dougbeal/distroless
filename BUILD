@@ -5,7 +5,7 @@ load("@io_bazel_rules_docker//container:container.bzl", "container_push")
 container_push(
     name = "push_nonroot",
     format = "Docker",
-    image = "//nonroot/nonroot",
+    image = "//nonroot:nonroot/image",
     registry = "index.docker.com",
     repository = "dougbeal/distolress",
     tag = "latest",
