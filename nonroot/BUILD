@@ -59,7 +59,7 @@ container_image(
         ":group_tar",
     ],
     user = "www-data",
-    visibility = ["//visibility:private"],
+    visibility = ["//visibility:public"],
 )
 
 container_image(
@@ -70,7 +70,7 @@ container_image(
         ":group_tar",
     ],
     user = "www-data",
-    visibility = ["//visibility:private"],
+    visibility = ["//visibility:public"],
 )
 
 container_image(
@@ -81,7 +81,7 @@ container_image(
         ":group_tar",
     ],
     user = "www-data",
-    visibility = ["//visibility:private"],
+    visibility = ["//visibility:public"],
 )
 
 # Simple go program to print out the username and uid.
