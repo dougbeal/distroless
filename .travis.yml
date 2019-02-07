@@ -28,7 +28,8 @@ install:
   - sudo pip install pylint
 
 script:
-  - ./test.sh
+  - bazel build --noshow_progress --noshow_loading_progress --test_output=errors //...
+  
 
 notifications:
   email: false
