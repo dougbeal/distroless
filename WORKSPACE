@@ -196,6 +196,16 @@ http_archive(
     urls = ["https://github.com/bazelbuild/rules_docker/archive/v0.7.0.tar.gz"],
 )
 
+# OPTIONAL: Call this to override the default docker toolchain configuration.
+# This call should be placed BEFORE the call to "container_repositories" below
+# to actually override the default toolchain configuration.
+# Note this is only required if you actually want to call
+# docker_toolchain_configure with a custom attr; please read the toolchains
+# docs in /toolchains/docker/ before blindly adding this to your WORKSPACE.
+
+load("@io_bazel_rules_docker//toolchains/docker:toolchain.bzl",
+    docker_toolchain_configure="toolchain_configure"
+)
 docker_toolchain_configure(
   name = "docker_config",
   # OPTIONAL: Path to a directory which has a custom docker client config.json.
