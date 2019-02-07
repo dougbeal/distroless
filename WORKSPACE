@@ -196,6 +196,14 @@ http_archive(
     urls = ["https://github.com/bazelbuild/rules_docker/archive/v0.7.0.tar.gz"],
 )
 
+docker_toolchain_configure(
+  name = "docker_config",
+  # OPTIONAL: Path to a directory which has a custom docker client config.json.
+  # See https://docs.docker.com/engine/reference/commandline/cli/#configuration-files
+  # for more details.
+  client_config="./config.json",
+)
+
 load(
     "@io_bazel_rules_docker//repositories:repositories.bzl",
     container_repositories = "repositories",
