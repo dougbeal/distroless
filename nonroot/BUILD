@@ -18,12 +18,14 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary")
     username = "user_nonroot_%d" % uid,
 ) for uid in UID]
 
-[passwd_file(
-    name = "passwd_%d" % uid,
+# filename comes from label
+passwd_file(
+    name = "passwd",
     entries = [
-        ":user_nonroot_%d" % uid,
+        ":user_nonroot_%d" % uid
+        for uid in UID
     ],
-) for uid in UID]
+)
 
 # Create /etc/group with the root group
 [group_entry(
@@ -32,26 +34,27 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary")
     groupname = "group_nonroot_%d" % uid,
 ) for uid in UID]
 
-[group_file(
-    name = "group_%d" % uid,
+group_file(
+    name = "group",
     entries = [
-        ":group_nonroot_%d" % uid,
+        ":group_nonroot_%d" % uid
+        for uid in UID
     ],
-) for uid in UID]
+)
 
-[pkg_tar(
-    name = "passwd_tar_%d" % uid,
-    srcs = [":passwd_%d" % uid],
+pkg_tar(
+    name = "passwd_tar",
+    srcs = [":passwd_%d"],
     mode = "0644",
     package_dir = "etc",
-) for uid in UID]
+)
 
-[pkg_tar(
-    name = "group_tar_%d" % uid,
-    srcs = [":group_%d" % uid],
+pkg_tar(
+    name = "group_tar",
+    srcs = [":group"],
     mode = "0644",
     package_dir = "etc",
-) for uid in UID]
+)
 
 # Include it in our image as a tar.
 [[container_image(
