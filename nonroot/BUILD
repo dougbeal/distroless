@@ -53,35 +53,35 @@ pkg_tar(
 # Include it in our image as a tar.
 container_image(
     name = "nonroot_static",
-    base = "//base:static",
+    base = "@distroless_static//image",
     tars = [
         ":passwd_tar",
         ":group_tar",
     ],
     user = "www-data",
-    visibility = ["//visibility:private"],
+    visibility = ["//visibility:public"],
 )
 
 container_image(
     name = "nonroot",
-    base = "//base",
+    base = "@distroless_base//image",
     tars = [
         ":passwd_tar",
         ":group_tar",
     ],
     user = "www-data",
-    visibility = ["//visibility:private"],
+    visibility = ["//visibility:public"],
 )
 
 container_image(
     name = "nonroot_debug",
-    base = "//base:debug",
+    base = "@distroless_debug//image",
     tars = [
         ":passwd_tar",
         ":group_tar",
     ],
     user = "www-data",
-    visibility = ["//visibility:private"],
+    visibility = ["//visibility:public"],
 )
 
 # Simple go program to print out the username and uid.
@@ -93,7 +93,7 @@ go_binary(
 
 container_image(
     name = "check_user_image",
-    base = ":passwd_image",
+    base = ":nonroot",
     files = [":user"],
     visibility = ["//visibility:private"],
 )
