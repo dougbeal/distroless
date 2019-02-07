@@ -227,21 +227,21 @@ container_repositories()
 load("@io_bazel_rules_docker//container:container.bzl", "container_pull")
 
 container_pull(
-    name = "distroless_base",
+    name = "distroless_base_image_",
     registry = "gcr.io",
     repository = "distroless/base",
     tag = "latest",
 )
 
 container_pull(
-    name = "distroless_debug",
+    name = "distroless_base_image_debug",
     registry = "gcr.io",
     repository = "distroless/base",
     tag = "debug",
 )
 
 container_pull(
-    name = "distroless_static",
+    name = "distroless_base_image_static",
     registry = "gcr.io",
     repository = "distroless/static",
     tag = "latest",
