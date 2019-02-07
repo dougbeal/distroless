@@ -64,7 +64,7 @@ container_image(
 
 container_image(
     name = "nonroot",
-    base = "@distroless//image",
+    base = "@distroless_base//image",
     tars = [
         ":passwd_tar",
         ":group_tar",
