@@ -44,7 +44,7 @@ group_file(
 
 pkg_tar(
     name = "passwd_tar",
-    srcs = [":passwd_%d"],
+    srcs = [":passwd"],
     mode = "0644",
     package_dir = "etc",
 )
