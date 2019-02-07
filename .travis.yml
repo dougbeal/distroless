@@ -3,6 +3,10 @@ dist: trusty
 sudo: required
 # Not technically required but suppresses 'Ruby' in Job status message.
 language: go
+
+services:
+  - docker
+
 python:
   - "2.7"
 os:
