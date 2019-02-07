@@ -203,18 +203,19 @@ http_archive(
 # docker_toolchain_configure with a custom attr; please read the toolchains
 # docs in /toolchains/docker/ before blindly adding this to your WORKSPACE.
 
-load(
-    "@io_bazel_rules_docker//toolchains/docker:toolchain.bzl",
-    docker_toolchain_configure = "toolchain_configure",
-)
+# use default, since docker login will be generating
+# load(
+#     "@io_bazel_rules_docker//toolchains/docker:toolchain.bzl",
+#     docker_toolchain_configure = "toolchain_configure",
+# )
 
-docker_toolchain_configure(
-    name = "docker_config",
-    # OPTIONAL: Path to a directory which has a custom docker client config.json.
-    # See https://docs.docker.com/engine/reference/commandline/cli/#configuration-files
-    # for more details.
-    client_config = ".",
-)
+# docker_toolchain_configure(
+#     name = "docker_config",
+#     # OPTIONAL: Path to a directory which has a custom docker client config.json.
+#     # See https://docs.docker.com/engine/reference/commandline/cli/#configuration-files
+#     # for more details.
+#     client_config = ".",
+# )
 
 load(
     "@io_bazel_rules_docker//repositories:repositories.bzl",
