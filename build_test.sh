@@ -2,7 +2,8 @@
 set -xe
 
 # docker credential
-docker login -u '$(shell echo $$DOCKER_USER)' -p '$(shell echo $$DOCKER_PASS)'
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
 
 # Bazel build and test
 bazel build --curses=no -s --verbose_explanations --verbose_failures //...
