@@ -75,7 +75,7 @@ pkg_tar(
     image = "//nonroot:image_nonroot_%s_%d_%s" % (image, uid, tag),
     registry = "index.docker.io",
     repository = "dougbeal/distroless",
-    tag = "%d_%s" % (uid, tag),
+    tag = "%s_%s_%d" % (image, tag, uid),
 ) for image in IMAGES] for tag in TAGS] for uid in UID]
 
 # # Simple go program to print out the username and uid.
