@@ -163,3 +163,19 @@ BUILD       Dockerfile  hello.py
 ```
 
 > Note: [ldd](http://man7.org/linux/man-pages/man1/ldd.1.html) is not installed in the base image as it's a shell script, you can copy it in or download it.
+
+
+# debugging
+##  BUILD file looks after evaluation. 
+```
+bazel query --output=build //...:all
+
+```
+
+## look at deps
+```
+bazel query --output=build 'deps(//...)'
+```
+
+## zlib not found on osx
+https://github.com/Homebrew/homebrew-core/issues/29176#issuecomment-398656987

@@ -1,2 +1,3 @@
 UID = [ 33, 82 ]
-TAGS = [ "", "static", "debug" ]
+TAGS = [ "latest", "debug" ]
+IMAGES = [ "base", "cc"]

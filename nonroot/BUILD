@@ -1,5 +1,6 @@
 load("@distroless//:variables.bzl", "UID")
 load("@distroless//:variables.bzl", "TAGS")
+load("@distroless//:variables.bzl", "IMAGES")
 load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
 load("@io_bazel_rules_docker//go:image.bzl", "go_image")
 load("@io_bazel_rules_docker//container:container.bzl", "container_image")
@@ -57,25 +58,25 @@ pkg_tar(
 )
 
 # Include it in our image as a tar.
-[[container_image(
-    name = "image_nonroot_%d_%s" % (uid, tag),
-    base = "@distroless_base_image_%s//image" % tag,
+[[[container_image(
+    name = "image_nonroot_%s_%d_%s" % (image, uid, tag),
+    base = "@distroless_%s_image_%s//image" % (image, tag),
     tars = [
         ":passwd_tar",
         ":group_tar",
     ],
     user = "user_nonroot_%d" % uid,
     visibility = ["//visibility:public"],
-) for tag in TAGS] for uid in UID]
+) for image in IMAGES] for tag in TAGS] for uid in UID]
 
-[[container_push(
-    name = "push_nonroot_%s_uid%d" % (tag, uid),
+[[[container_push(
+    name = "push_nonroot_%s_%s_uid%d" % (image, tag, uid),
     format = "Docker",
-    image = "//nonroot:image_nonroot_%d_%s" % (uid, tag),
+    image = "//nonroot:image_nonroot_%s_%d_%s" % (image, uid, tag),
     registry = "index.docker.io",
     repository = "dougbeal/distroless",
     tag = "%d_%s" % (uid, tag),
-) for tag in TAGS] for uid in UID]
+) for image in IMAGES] for tag in TAGS] for uid in UID]
 
 # # Simple go program to print out the username and uid.
 # go_binary(

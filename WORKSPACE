@@ -2,6 +2,8 @@ workspace(name = "distroless")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
+load("@distroless//:variables.bzl", "TAGS")
+load("@distroless//:variables.bzl", "IMAGES")
 
 http_archive(
     name = "io_bazel_rules_go",
@@ -226,26 +228,15 @@ container_repositories()
 
 load("@io_bazel_rules_docker//container:container.bzl", "container_pull")
 
-container_pull(
-    name = "distroless_base_image_",
-    registry = "gcr.io",
-    repository = "distroless/base",
-    tag = "latest",
-)
+# base image is latest
+labels = [tag if tag != "" else "latest" for tag in TAGS]
 
-container_pull(
-    name = "distroless_base_image_debug",
+[[container_pull(
+    name = "distroless_%s_image_%s" % (image, label),
     registry = "gcr.io",
-    repository = "distroless/base",
-    tag = "debug",
-)
-
-container_pull(
-    name = "distroless_base_image_static",
-    registry = "gcr.io",
-    repository = "distroless/static",
-    tag = "latest",
-)
+    repository = "distroless/%s" % image,
+    tag = "%s" % label,
+) for image in IMAGES] for label in labels]
 
 # Have the py_image dependencies for testing.
 load(
